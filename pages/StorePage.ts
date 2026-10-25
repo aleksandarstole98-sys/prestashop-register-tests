@@ -3,14 +3,6 @@ import { expect, type Locator, type Page } from '@playwright/test';
 
 /**
  * PrestaShop storefront Page Object.
- *
- * Handles:
- * - Opening the demo store
- * - Navigating to sign in
- * - Detecting authenticated customers
- * - Opening the customer dropdown
- * - Signing out
- * - Diagnosing server errors
  */
 export class StorePage {
   readonly page: Page;
@@ -115,12 +107,7 @@ export class StorePage {
 
   /**
    * Open the demo storefront directly.
-   *
-   * The PrestaShop demo initially loads the store
-   * inside an iframe. We retrieve its URL and
-   * navigate directly to it.
-   *
-   * STORE_URL can override automatic discovery.
+
    */
   async open(): Promise<void> {
     const storeUrl =
@@ -207,9 +194,6 @@ export class StorePage {
 
   /**
    * Check whether the customer account menu exists.
-   *
-   * This checks the logged-in account control,
-   * not the hidden Sign out link.
    */
   async isLoggedIn(): Promise<boolean> {
     await this.checkServerError();
@@ -249,16 +233,15 @@ export class StorePage {
   async signOut(): Promise<void> {
     await this.openAccountMenu();
 
-    // Click Sign out without waiting for navigation
   await this.signOutLink.click({
     noWaitAfter: true,
     timeout: 15000,
   });
-  // Wait for the signed-out state
+
   await expect(this.signInLink).toBeVisible({
     timeout: 30000,
   });
-  // Verify the logged-in account menu is gone
+  
   await expect(this.accountMenu).toHaveCount(0, {
     timeout: 30000,
   });

@@ -186,12 +186,6 @@ export class RegistrationPage {
 
   /**
    * Locate the field container.
-   *
-   * Confirmed HTML:
-   * <div class="mb-3 has-error">
-   *   <input name="firstname" ...>
-   *   ...
-   * </div>
    */
   fieldContainer(fieldName: string): Locator {
     return this.form
@@ -206,9 +200,6 @@ export class RegistrationPage {
 
   /**
    * Find server-side validation messages.
-   *
-   * Supports PrestaShop error messages such as:
-   * "Invalid format."
    */
   fieldError(fieldName: string): Locator {
     return this.fieldContainer(fieldName).locator(
@@ -221,13 +212,6 @@ export class RegistrationPage {
 
   /**
    * Detect browser-side or server-side validation errors.
-   *
-   * Checks:
-   * 1. HTML5 validity
-   * 2. Visible server validation messages
-   * 3. PrestaShop has-error class
-   * 4. Invalid input CSS classes
-   * 5. aria-invalid attribute
    */
   async hasValidationProblem(
     fieldName: string
@@ -289,7 +273,7 @@ export class RegistrationPage {
 
       return invalidClass;
     } catch {
-      // Page may be navigating after submission
+    
       return false;
     }
   }
