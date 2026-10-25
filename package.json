@@ -1,0 +1,16 @@
+{
+  "name": "prestashop-register-tests",
+  "version": "1.0.0",
+  "description": "Playwright end-to-end tests for the Register functionality of the PrestaShop demo store",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@types/node": "^22.0.0"
+  }
+}
