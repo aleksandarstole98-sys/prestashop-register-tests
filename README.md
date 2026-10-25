@@ -12,7 +12,7 @@ End-to-end tests for the **Register** (Create an account) functionality of the
 ## Installation
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/aleksandarstole98-sys/prestashop-register-tests.git>
 cd prestashop-register-tests
 npm install
 npx playwright install chromium
